@@ -3,3 +3,9 @@ requests
 matplotlib
 streamlit
 numpy
+Django>=6.0,<6.1
+djangorestframework
+django-cors-headers
+joblib
+scikit-learn
+sentence-transformers

@@ -1,10 +1,15 @@
+from functools import lru_cache
+
 from sentence_transformers import SentenceTransformer, util
 
 MODEL_NAME = "all-MiniLM-L6-v2"
 
-model = SentenceTransformer(MODEL_NAME)
+@lru_cache(maxsize=1)
+def get_model():
+    return SentenceTransformer(MODEL_NAME)
 
 def semantic_similarity(name1, name2):
+    model = get_model()
     embedding1 = model.encode(name1, convert_to_tensor=True)
     embedding2 = model.encode(name2, convert_to_tensor=True)
 
